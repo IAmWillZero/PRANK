@@ -1,12 +1,16 @@
-from flask import Flask
+from flask import Flask, request
+import os
 app = Flask(__name__)
 
 visitas = 0
+ips = []
 
 @app.route("/")
 def home():
-    global visitas
+    global visitas, ips
     visitas += 1
+    ip = request.remote_addr
+    ips.append(ip)
     return f"""
     <!doctype html>
 <html lang="es">
@@ -147,4 +151,5 @@ def home():
     """
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    port = int(os.environ.get("PORT", 8000))  # Railway asigna el puerto automáticamente
+    app.run(host="0.0.0.0", port=port)
