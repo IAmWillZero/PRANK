@@ -18,40 +18,50 @@ def home():
     *{{box-sizing:border-box;margin:0;padding:0}}
     html,body{{height:100%}}
     body{{
-      background:#000;
-      color:#00ff6a;
-      font-family:monospace, system-ui, monospace;
+      background:#0a0a0a;
+      color:#00ff41;
+      font-family:'Courier New', 'Consolas', monospace;
       overflow:hidden;
     }}
 
     .matrix{{position:fixed;inset:0;z-index:0;}}
     canvas{{width:100%;height:100%;display:block}}
 
-    .panel{{position:relative;z-index:2;padding:32px;max-width:1000px;
-      margin:40px auto;background:rgba(0,0,0,0.45);
-      border:1px solid rgba(0,255,106,0.08);
-      box-shadow:0 8px 40px rgba(0,0,0,0.7);
-      border-radius:10px;backdrop-filter:blur(4px)}}
+    .panel{{position:relative;z-index:2;padding:40px;max-width:1200px;
+      margin:30px auto;background:rgba(0,0,0,0.85);
+      border:2px solid rgba(0,255,65,0.15);
+      box-shadow:0 0 50px rgba(0,255,65,0.1), inset 0 0 30px rgba(0,0,0,0.8);
+      border-radius:8px;backdrop-filter:blur(8px)}}
 
-    h1{{font-size:36px;letter-spacing:2px;color:#ff2d2d;
-      text-shadow:0 0 12px rgba(255,45,45,0.25)}}
+    h1{{font-size:42px;letter-spacing:3px;color:#ff0040;
+      text-shadow:0 0 20px rgba(255,0,64,0.4), 0 0 40px rgba(255,0,64,0.2);
+      text-align:center;margin-bottom:20px;
+      font-weight:bold;text-transform:uppercase}}
 
-    .log{{margin-top:18px;background:rgba(0,0,0,0.6);padding:14px;
-      border-radius:6px;height:320px;overflow:auto;
-      border:1px dashed rgba(0,255,106,0.06)}}
-    .log > div{{font-size:14px;line-height:1.45}}
+    .status{{color:#00ff41;font-size:16px;margin-bottom:25px;
+      text-align:center;opacity:0.8}}
+
+    .log{{margin-top:25px;background:rgba(0,0,0,0.9);padding:20px;
+      border-radius:4px;height:350px;overflow:auto;
+      border:1px solid rgba(0,255,65,0.2);
+      box-shadow:inset 0 0 20px rgba(0,0,0,0.8)}}
+    .log > div{{font-size:15px;line-height:1.6;color:#00ff41;
+      padding:2px 0;border-left:3px solid rgba(0,255,65,0.3);
+      padding-left:10px;margin:3px 0}}
 
     .modal{{position:fixed;inset:0;display:flex;align-items:center;
       justify-content:center;padding:24px;z-index:9;visibility:hidden;
-      opacity:0;transition:all .25s}}
+      opacity:0;transition:all .3s;background:rgba(0,0,0,0.8)}}
     .modal.show{{visibility:visible;opacity:1}}
-    .modal .card{{background:#050505;padding:20px;border-radius:10px;
-      max-width:760px;border:1px solid rgba(255,0,0,0.08)}}
-    .modal h2{{color:#ffbcbc}}
-    .modal p{{color:#d6ffd7;margin-top:8px}}
+    .modal .card{{background:#0a0a0a;padding:30px;border-radius:8px;
+      max-width:800px;border:2px solid rgba(0,255,65,0.3);
+      box-shadow:0 0 40px rgba(0,255,65,0.2)}}
+    .modal h2{{color:#00ff41;font-size:28px;text-align:center;margin-bottom:15px}}
+    .modal p{{color:#ccffcc;margin-top:12px;font-size:16px;line-height:1.5}}
 
-    footer{{position:fixed;left:12px;bottom:12px;z-index:3;
-      font-size:13px;color:rgba(255,255,255,0.2)}}
+    footer{{position:fixed;left:15px;bottom:15px;z-index:3;
+      font-size:12px;color:rgba(0,255,65,0.4);
+      text-shadow:0 0 5px rgba(0,255,65,0.2)}}
   </style>
 </head>
 <body>
@@ -59,7 +69,7 @@ def home():
 
   <div class="panel" role="main">
     <h1>!!! SYSTEM BREACH !!!</h1>
-    <p>Visitas: {visitas}</p>
+    <p class="status">Conexiones activas: {visitas}</p>
     <div class="log" id="log" aria-live="polite"></div>
   </div>
 
